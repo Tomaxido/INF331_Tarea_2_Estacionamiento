@@ -14,6 +14,7 @@ Se modelan los tickets y la lógica de negocio de manera separada:
 - `modelo.EstadoTicket`: enum con ABIERTO y CERRADO.
 - `servicio.CalculadoraTarifas`: encapsula las reglas de cálculo de minutos, bloques de 30 minutos, tarifas por tipo de vehículo, tope diario y descuento de fin de semana.
 - `servicio.GestorTickets`: administra los tickets en memoria, asigna ids, registra entradas y salidas, lista abiertos/cerrados y calcula el total recaudado por día (usando la **fecha de salida**).
+- `AplicacionEstacionamiento`: programa de consola que muestra el menú y llama a los servicios.
 
 ## Requisitos
 
