@@ -12,6 +12,7 @@ Se modelan los tickets y la lógica de negocio de manera separada:
 - `modelo.Ticket`: representa un ticket con id, patente, tipo de vehículo, fecha/hora de entrada y salida, estado y monto cobrado.
 - `modelo.TipoVehiculo`: enum con AUTO, MOTO, CAMIONETA.
 - `modelo.EstadoTicket`: enum con ABIERTO y CERRADO.
+- `servicio.CalculadoraTarifas`: encapsula las reglas de cálculo de minutos, bloques de 30 minutos, tarifas por tipo de vehículo, tope diario y descuento de fin de semana.
 
 ## Requisitos
 
