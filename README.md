@@ -7,4 +7,19 @@ Aplicación de consola en Java que gestiona tickets de estacionamiento y calcula
 
 ## Diseño general
 
-Se modelarán los tickets y la lógica de negocio de manera separada.
+Se modelan los tickets y la lógica de negocio de manera separada:
+
+- `modelo.Ticket`: representa un ticket con id, patente, tipo de vehículo, fecha/hora de entrada y salida, estado y monto cobrado.
+- `modelo.TipoVehiculo`: enum con AUTO, MOTO, CAMIONETA.
+- `modelo.EstadoTicket`: enum con ABIERTO y CERRADO.
+
+## Requisitos
+
+- Java 21
+- Maven 3.x
+
+Para verificar versiones:
+
+```bash
+java -version
+mvn -version
