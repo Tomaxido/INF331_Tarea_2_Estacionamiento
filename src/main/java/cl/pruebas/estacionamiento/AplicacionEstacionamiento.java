@@ -65,13 +65,16 @@ public class AplicacionEstacionamiento {
 
     private static void registrarEntrada(Scanner scanner, GestorTickets gestor) {
         System.out.print("Patente: ");
-        String patente = scanner.nextLine().trim();
+        String patente = scanner.nextLine();
         TipoVehiculo tipo = leerTipoVehiculo(scanner);
 
         LocalDateTime ahora = LocalDateTime.now();
-        Ticket ticket = gestor.registrarEntrada(patente, tipo, ahora);
-
-        System.out.println("Ticket creado con id " + ticket.getId() + " a las " + ahora.format(FORMATO_FECHA_HORA));
+        try {
+            Ticket ticket = gestor.registrarEntrada(patente, tipo, ahora);
+            System.out.println("Ticket creado con id " + ticket.getId() + " a las " + ahora.format(FORMATO_FECHA_HORA));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     private static void registrarSalida(Scanner scanner, GestorTickets gestor) {
@@ -153,8 +156,11 @@ public class AplicacionEstacionamiento {
         System.out.println("Entrada: " + ticket.getFechaHoraEntrada().format(FORMATO_FECHA_HORA));
         if (ticket.getFechaHoraSalida() == null) {
             System.out.println("Estado: ABIERTO");
+            System.out.println("Tiempo estacionado: en curso");
         } else {
             System.out.println("Salida: " + ticket.getFechaHoraSalida().format(FORMATO_FECHA_HORA));
+            long minutos = java.time.Duration.between(ticket.getFechaHoraEntrada(), ticket.getFechaHoraSalida()).toMinutes();
+            System.out.println("Tiempo estacionado: " + minutos + " minutos");
             System.out.println("Estado: CERRADO");
             System.out.println("Monto cobrado: $" + ticket.getMontoCobrado());
         }
